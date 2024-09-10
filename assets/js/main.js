@@ -12,6 +12,8 @@ const authorText = document.getElementById("author");
 const categoryText = document.getElementById("category");
 const categoriesDropdown = document.getElementById("categories-dropdown");
 const messageBox = document.getElementById("message-box");
+const decreaseFontBtn = document.getElementById('decrease-font-btn');
+const increaseFontBtn = document.getElementById('increase-font-btn');
 
 async function fetchQuotesData() {
   try {
@@ -125,6 +127,23 @@ const showMessage = (message) => {
   messageBox.textContent = message;
 };
 
+const increaseQuoteFontSize = () => {
+  const quoteText = document.getElementById("quote");
+  const currentFontSize = parseInt(window.getComputedStyle(quoteText).fontSize);
+  const newFontSize = currentFontSize + 2;
+  quoteText.style.fontSize = `${newFontSize}px`;
+};
+
+const decreaseQuoteFontSize = () => {
+  const quoteText = document.getElementById("quote");
+  const currentFontSize = parseInt(window.getComputedStyle(quoteText).fontSize);
+  const newFontSize = currentFontSize - 2;
+  quoteText.style.fontSize = `${newFontSize}px`;
+};
+
 generateBtn.addEventListener("click", generateRandomQuote);
 nextQuoteBtn.addEventListener("click", handleNextQuote);
 prevQuoteBtn.addEventListener("click", handlePrevQuote);
+
+decreaseFontBtn.addEventListener("click", decreaseQuoteFontSize);
+increaseFontBtn.addEventListener("click", increaseQuoteFontSize);

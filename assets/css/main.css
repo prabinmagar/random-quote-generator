@@ -1,0 +1,129 @@
+:root {
+  --default-black: #000000;
+  --default-white: #ffffff;
+  /* font stack */
+  --font-open-sans: "Open Sans", sans-serif;
+  --transition: all 300ms ease-in-out;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-behavior: smooth;
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-family: inherit;
+}
+
+select {
+  border: 1px solid var(--default-black);
+  border-radius: 4px;
+  font-size: 16px;
+  height: 40px;
+  width: 240px;
+  padding: 0 8px;
+}
+
+/* FLEX UITLS */
+.d-flex{
+    display: flex;
+}
+.align-items-center{
+    align-items: center;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.justify-content-between{
+    justify-content: space-between;
+}
+
+/* FONT WEIGHTS */
+.font-semibold {
+  font-weight: 600;
+}
+
+/* FONT SIZES */
+.text-xs {
+  font-size: 12px;
+}
+.text-sm {
+  font-size: 14px;
+}
+.text-base {
+  font-size: 16px;
+}
+.text-lg {
+  font-size: 18px;
+}
+.text-xl {
+  font-size: 20px;
+}
+
+.page-wrapper{
+    width: 100%;
+}
+
+.quote-wrapper {
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+#quote {
+  font-size: 24px;
+  display: block;
+  font-weight: 500;
+}
+.quote-text-wrapper {
+  display: flex;
+  margin-bottom: 12px;
+}
+.quote-text-wrapper i {
+  font-size: 32px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* FONT BUTTON STYLINGS */
+.font-btn {
+  border: 1px solid var(--default-black);
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  font-size: 12px;
+  transition: var(--transitions);
+}
+.font-btn:hover {
+  background-color: var(--default-black);
+  color: var(--default-white);
+}
+.font-size-btns{
+    margin-left: 8px;
+}
