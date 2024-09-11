@@ -12,8 +12,10 @@ const authorText = document.getElementById("author");
 const categoryText = document.getElementById("category");
 const categoriesDropdown = document.getElementById("categories-dropdown");
 const messageBox = document.getElementById("message-box");
-const decreaseFontBtn = document.getElementById('decrease-font-btn');
-const increaseFontBtn = document.getElementById('increase-font-btn');
+const decreaseFontBtn = document.getElementById("decrease-font-btn");
+const increaseFontBtn = document.getElementById("increase-font-btn");
+const quoteTextBlock = document.querySelector(".quote-text");
+const themeBtn = document.getElementById('theme-btn');
 
 async function fetchQuotesData() {
   try {
@@ -39,7 +41,7 @@ fetchQuotesData();
 const showCategoriesDropdown = () => {
   const categoriesSelect = document.createElement("select");
   const selectLabelOption = document.createElement("option");
-  selectLabelOption.textContent = "-- Select a category --";
+  selectLabelOption.textContent = "Select a category";
   selectLabelOption.value = "";
   selectLabelOption.selected = true;
   categoriesSelect.appendChild(selectLabelOption);
@@ -49,6 +51,7 @@ const showCategoriesDropdown = () => {
     categoryOption.textContent = category;
     categoryOption.value = category;
     categoriesSelect.appendChild(categoryOption);
+    quoteTextBlock.classList.add("hide");
   });
 
   categoriesSelect.addEventListener("change", (event) => {
@@ -60,6 +63,7 @@ const showCategoriesDropdown = () => {
       authorText.textContent = "";
       categoryText.textContent = "";
       messageBox.textContent = "";
+      quoteTextBlock.classList.add("hide");
     } else {
       showMessage("Please select a category.");
     }
@@ -92,6 +96,7 @@ const generateRandomQuote = () => {
   quoteText.textContent = quote.quote;
   authorText.textContent = quote.author;
   categoryText.textContent = `(${quote.category})`;
+  quoteTextBlock.classList.remove("hide");
 };
 
 const handlePrevQuote = () => {
@@ -105,6 +110,7 @@ const handlePrevQuote = () => {
   quoteText.textContent = quote.quote;
   authorText.textContent = quote.author;
   categoryText.textContent = `(${quote.category})`;
+  quoteTextBlock.classList.remove("hide");
 };
 
 const handleNextQuote = () => {
@@ -117,6 +123,7 @@ const handleNextQuote = () => {
   quoteText.textContent = quote.quote;
   authorText.textContent = quote.author;
   categoryText.textContent = `(${quote.category})`;
+  quoteTextBlock.classList.remove("hide");
 };
 
 const generateRandomIndex = () => {
@@ -125,6 +132,11 @@ const generateRandomIndex = () => {
 
 const showMessage = (message) => {
   messageBox.textContent = message;
+  messageBox.style.display = "block";
+
+  setTimeout(() => {
+    messageBox.style.display = "none";
+  }, 1000);
 };
 
 const increaseQuoteFontSize = () => {
@@ -141,9 +153,29 @@ const decreaseQuoteFontSize = () => {
   quoteText.style.fontSize = `${newFontSize}px`;
 };
 
+const toggleThemeMode = () => {
+  const pageBody = document.body;
+  pageBody.classList.toggle("dark-mode");
+
+  if (pageBody.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+};
+
+const useSavedTheme = () => {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  if (savedTheme === "dark") {
+    document.body.classList.add('dark-mode');
+  }
+}
+
+useSavedTheme();
+
 generateBtn.addEventListener("click", generateRandomQuote);
 nextQuoteBtn.addEventListener("click", handleNextQuote);
 prevQuoteBtn.addEventListener("click", handlePrevQuote);
-
 decreaseFontBtn.addEventListener("click", decreaseQuoteFontSize);
 increaseFontBtn.addEventListener("click", increaseQuoteFontSize);
+themeBtn.addEventListener("click", toggleThemeMode);

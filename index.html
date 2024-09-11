@@ -21,16 +21,16 @@
 </head>
 
 <body>
-
-    <div class="page-wrapper">
+    <div class="page-wrapper d-flex flex-column align-items-center justify-content-center">
+        <button type="button" id="theme-btn">Toggle Theme</button>
         <div class="quote-wrapper">
             <div class="quote-content-top">
-                <div class="quote-text">
+                <div class="quote-text hide">
                     <div class="quote-text-wrapper">
                         <i class="fas fa-quote-left"></i>
                         <span id="quote"></span>
                     </div>
-                    <div class="d-flex align-items-center justify-content-between">
+                    <div class="quote-text-misc d-flex align-items-center justify-content-between flex-wrap">
                         <div class="d-flex align-items-center">
                             <p class="text-xs">Change font size here :</p>
                             <div class="font-size-btns d-flex align-items-center">
@@ -47,9 +47,9 @@
                             <span id="category">(category)</span>
                         </div>
                     </div>
-                </div>
-                <div class="quote-author">
-                    <span id="author"></span>
+                    <div class="quote-author">
+                        --&nbsp;<span id="author"></span>
+                    </div>
                 </div>
                 <div id="categories-dropdown">
                     <!-- categories list select list here -->
@@ -59,9 +59,10 @@
                     <button type="button" id="next-quote">Next</button>
                 </div>
             </div>
-            <div class="quote-content-bottom">
+            <div class="quote-content-bottom d-flex flex-column align-items-center">
                 <div id="message-box"></div>
-                <button type="button" id="generate-btn">Random</button>
+                <button type="button" id="generate-btn"><i class="fa-solid fa-wand-magic-sparkles"></i> generate Random
+                    quote</button>
             </div>
         </div>
     </div>
