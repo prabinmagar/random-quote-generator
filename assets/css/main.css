@@ -125,7 +125,8 @@ select {
 }
 .quote-text-wrapper {
   display: flex;
-  margin-bottom: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
 }
 .quote-text-wrapper i {
   font-size: 32px;
